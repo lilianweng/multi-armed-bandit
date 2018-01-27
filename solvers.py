@@ -1,6 +1,7 @@
 from __future__ import division
 
 import numpy as np
+import time
 from scipy.stats import beta
 
 from bandits import BernoulliBandit
@@ -12,6 +13,8 @@ class Solver(object):
         bandit (Bandit): the target bandit to solve.
         """
         assert isinstance(bandit, BernoulliBandit)
+        np.random.seed(int(time.time()))
+
         self.bandit = bandit
 
         self.counts = [0] * self.bandit.n
